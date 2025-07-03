@@ -2,7 +2,7 @@ name: Super-Linter
 
 on: push
 
-permissions: # Explicit permissions (recommended by Checkov)
+permissions:
   contents: read
 
 jobs:
@@ -12,10 +12,11 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Run Super-Linter
         uses: github/super-linter@v6
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: true
